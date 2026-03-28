@@ -23,6 +23,12 @@
   --first-color-alt: hsl(var(--hue), 80%, 56%);
   --first-color-alt-2: hsl(var(--hue), 60%, 56%);
   --first-color-light: hsl(var(--hue), 60%, 74%);
+
+  --color-1: hsl(47, 76%, 56%);
+  --color-2: hsl(137, 76%, 56%);
+  --color-3: hsl(227, 76%, 56%);
+  --color-4: hsl(317, 76%, 56%);
+
   --title-color: hsl(240, 8%, 95%);
   --text-color: hsl(240, 8%, 70%);
   --text-color-light: hsl(240, 8%, 50%);
@@ -38,9 +44,9 @@
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
   --h3-font-size: 1rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
 
   /*========== Font weight ==========*/
   --font-regular: 400;
@@ -61,8 +67,8 @@
     --h2-font-size: 1.5rem;
     --h3-font-size: 1.25rem;
     --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
 
@@ -93,7 +99,10 @@ button {
   border: none;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: var(--title-color);
   font-family: var(--second-font);
   font-weight: var(--font-semi-bold);
@@ -145,81 +154,157 @@ img {
 /*=============== BLOB ===============*/
 /* Blob animate */
 
+.blob-animate {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(
+    180deg,
+    var(--first-color-alt) 20%,
+    var(--first-color-light) 100%
+  );
+  border-radius: 50%;
+  position: absolute;
+  filter: blur(35px);
+  z-index: -1;
+  animation: animateBlob 5s linear infinite;
+}
+
+@keyframes animateBlob {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* Blob */
 
-
 /*=============== CUSTOM CURSOR ===============*/
-
 
 /* Hide the custom cursor */
 
-
 /*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    var(--body-color) 60%,
+    hsla(240, 100%, 2%, 0) 100%
+  );
+  z-index: var(--z-fixed);
+}
 
+.header .blob-animate {
+  top: -3rem;
+  left: -3rem;
+}
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 1.5rem; */
+  padding-block: 1.5rem;
+}
+
+.nav_logo {
+  font-family: var(--second-font);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+  align-self: flex-start;
+  transition: color 0.4s;
+}
+
+.nav_logo:hover {
+  color: var(--first-color);
+}
+
+.nav_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  row-gap: 0.5rem;
+}
+
+.nav_link {
+  color: var(--title-color);
+  font: var(--font-semi-bold) var(--small-font-size) var(--second-font);
+  transition:
+    color 0.4s,
+    text-shadow 0.4s;
+}
+
+.nav_link:hover {
+  color: var(--first-color);
+  text-shadow: 0 8px 16px var(--first-color);
+}
 /* Active link */
-
 
 /*=============== HOME ===============*/
 
-
 /*=============== BUTTON ===============*/
-
 
 /*=============== ABOUT ===============*/
 
-
 /*=============== PROJECTS ===============*/
-
 
 /* Swiper class */
 
-
 /*=============== WORK ===============*/
-
 
 /* Show & hide sections */
 
-
 /* Active tab */
-
 
 /*=============== SERVICES ===============*/
 
-
 /* Hide services info */
-
 
 /* Rotate icon */
 
-
 /*=============== TESTIMONIALS ===============*/
-
 
 /* Infinite scroll animation */
 
-
 /*=============== CONTACT ===============*/
-
 
 /*=============== FOOTER ===============*/
 
-
 /*=============== SCROLL BAR ===============*/
-
 
 /*=============== BREAKPOINTS ===============*/
 /* For small devices */
-
+@media screen and (max-width: 320px) {
+  .container {
+    margin-inline: 1rem;
+  }
+}
 
 /* For medium devices */
 
-
 /* For large devices */
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
 
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+    align-items: center;
+  }
 
+  .nav_logo {
+    align-self: initial;
+  }
+
+  .nav_list {
+    flex-direction: row;
+    column-gap: 5.5rem;
+  }
+}
 /* For 2K resolutions (2048 x 1152, 2048 x 1536) */
-
 
 /* Custom cursor is hidden for mobile devices */
