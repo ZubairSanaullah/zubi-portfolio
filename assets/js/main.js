@@ -109,3 +109,38 @@ const footerYear = document.getElementById("footer-year");
 if (footerYear) {
   footerYear.textContent = new Date().getFullYear();
 }
+
+/*=============== SERVICES ACCORDION ===============*/
+const servicesCards = document.querySelectorAll(".services_card");
+
+servicesCards.forEach((card) => {
+  const button = card.querySelector(".services_button");
+  const info = card.querySelector(".services_info");
+
+  // 1. Ensure all cards start closed correctly
+  if (info) {
+    info.style.height = "0px";
+  }
+
+  if (button) {
+    button.addEventListener("click", () => {
+      const isCardOpen = card.classList.contains("services-open");
+
+      // 2. Close all other cards and reset their heights
+      servicesCards.forEach((otherCard) => {
+        otherCard.classList.remove("services-open");
+        const otherInfo = otherCard.querySelector(".services_info");
+        if (otherInfo) {
+          otherInfo.style.height = "0px";
+        }
+      });
+
+      // 3. Open the clicked card if it wasn't already open
+      if (!isCardOpen) {
+        card.classList.add("services-open");
+        // Using scrollHeight allows the div to expand to its natural content size
+        info.style.height = info.scrollHeight + "px";
+      }
+    });
+  }
+});
