@@ -1,40 +1,74 @@
-/*=============== HOME SPLIT TEXT ===============*/
-const { animate, text, stagger } = anime;
+/*=============== TEXT SPLITTER FOR ANIME.JS ===============*/
+// This function wraps every letter in a span so AnimeJS can move them
+const splitText = (selector) => {
+  const element = document.querySelector(selector);
+  if (element) {
+    const text = element.textContent;
+    element.innerHTML = text
+      .split("")
+      .map(
+        (char) => `<span class="char">${char === " " ? "&nbsp;" : char}</span>`,
+      )
+      .join("");
+    return element.querySelectorAll(".char");
+  }
+};
 
-const { chars: chars1 } = text.split(".home_profession-1", { chars: true });
-const { chars: chars2 } = text.split(".home_profession-2", { chars: true });
+const chars1 = splitText(".home_profession-1");
+const chars2 = splitText(".home_profession-2");
 
-animate(chars1, {
-  y: [{ to: ["100%", "0%"] }, { to: "-100%", delay: 4000, ease: "in(3)" }],
-  duration: 900,
-  ease: "out(3)",
-  delay: stagger(80),
-  loop: true,
-});
+/*=============== HOME TEXT ANIMATION ===============*/
+if (chars1 && chars2) {
+  const tl = anime.timeline({ loop: true });
 
-animate(chars2, {
-  y: [{ to: ["100%", "0%"] }, { to: "-100%", delay: 4000, ease: "in(3)" }],
-  duration: 900,
-  ease: "out(3)",
-  delay: stagger(80),
-  loop: true,
-});
+  tl.add({
+    targets: chars1,
+    translateY: ["100%", "0%"],
+    opacity: [0, 1],
+    delay: anime.stagger(40),
+    duration: 800,
+    easing: "easeOutExpo",
+  })
+    .add({
+      targets: chars1,
+      translateY: "-100%",
+      opacity: [1, 0],
+      delay: anime.stagger(40, { start: 2000 }),
+      duration: 800,
+      easing: "easeInExpo",
+    })
+    .add({
+      targets: chars2,
+      translateY: ["100%", "0%"],
+      opacity: [0, 1],
+      delay: anime.stagger(40),
+      duration: 800,
+      easing: "easeOutExpo",
+    })
+    .add({
+      targets: chars2,
+      translateY: "-100%",
+      opacity: [1, 0],
+      delay: anime.stagger(40, { start: 2000 }),
+      duration: 800,
+      easing: "easeInExpo",
+    });
+}
 
 /*=============== SWIPER PROJECTS ===============*/
-const swiperProjects = new Swiper(".projects_swiper", {
+let swiperProjects = new Swiper(".projects_swiper", {
   loop: true,
   spaceBetween: 24,
-  slidesPerview: "auto",
+  slidesPerView: "auto",
   grabCursor: true,
-  speed: 600,
-
   pagination: {
     el: ".swiper-pagination",
+    clickable: true,
   },
-
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
+  breakpoints: {
+    1150: {
+      spaceBetween: 48,
+    },
   },
 });
 
@@ -44,31 +78,34 @@ const tabs = document.querySelectorAll("[data-target]"),
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    const targetSelector = tab.dataset.target,
-      targetContent = document.querySelector(targetSelector);
+    const target = document.querySelector(tab.dataset.target);
 
-    //Disables all content and active tabs
-    tabContents.forEach((content) => content.classList.remove("work-active"));
+    // Remove active class from all contents
+    tabContents.forEach((tc) => tc.classList.remove("work-active"));
+    // Add active class to target content
+    target.classList.add("work-active");
+
+    // Update active tab button style
     tabs.forEach((t) => t.classList.remove("work-active"));
-
-    //Adds the active class to the clicked tab and its content
     tab.classList.add("work-active");
-    targetContent.classList.add("work-active");
   });
 });
 
-/*=============== SERVICES ACCORDION ===============*/
-
-/*=============== TESTIMONIALS OF DUPLICATE CARDS ===============*/
-
-/*=============== COPY EMAIL IN CONTACT ===============*/
-
-/*=============== CURRENT YEAR OF THE FOOTER ===============*/
-
-/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
-
-/*=============== CUSTOM CURSOR ===============*/
-
-/* Hide custom cursor on links */
-
 /*=============== SCROLL REVEAL ANIMATION ===============*/
+const sr = ScrollReveal({
+  origin: "top",
+  distance: "60px",
+  duration: 2500,
+  delay: 400,
+});
+
+sr.reveal(`.home_data, .about_image, .work_tabs`);
+sr.reveal(`.home_image, .about_data`, { origin: "bottom" });
+sr.reveal(`.home_social, .home_cv`, { origin: "left" });
+sr.reveal(`.projects_container`, { interval: 100 });
+
+/*=============== SET FOOTER YEAR ===============*/
+const footerYear = document.getElementById("footer-year");
+if (footerYear) {
+  footerYear.textContent = new Date().getFullYear();
+}

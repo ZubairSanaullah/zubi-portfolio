@@ -4,20 +4,6 @@
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3.5rem;
-  /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  /* 
-         Change favorite color:
-
-         Default (Purple): hsl(255, 60%, 64%)
-         Blue: hsl(220, 60%, 64%) - Pink: hsl(300, 60%, 64%)
-         Green: hsl(110, 60%, 64%) - Cyan: hsl(180, 60%, 64%)
-         Orange: hsl(15, 60%, 64%) - Red: hsl(358, 60%, 64%)
-
-         For more colors visit: https://htmlcolorcodes.com/
-         -> Choose any color 
-         -> Copy the color mode (HSL)
-  */
   --hue: 255;
   --first-color: hsl(var(--hue), 60%, 64%);
   --first-color-alt: hsl(var(--hue), 80%, 56%);
@@ -35,8 +21,6 @@
   --body-color: hsl(240, 100%, 2%);
   --container-color: hsl(240, 8%, 6%);
 
-  /*========== Font and typography ==========*/
-  /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Montserrat", sans-serif;
   --second-font: "Unbounded", sans-serif;
   --biggest-font-size: 2rem;
@@ -48,12 +32,10 @@
   --small-font-size: 0.813rem;
   --smaller-font-size: 0.75rem;
 
-  /*========== Font weight ==========*/
   --font-regular: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
 
-  /*========== z index ==========*/
   --z-tooltip: 10;
   --z-fixed: 100;
 }
@@ -152,8 +134,6 @@ img {
 }
 
 /*=============== BLOB ===============*/
-/* Blob animate */
-
 .blob-animate {
   width: 100px;
   height: 100px;
@@ -173,13 +153,11 @@ img {
   0% {
     transform: rotate(0);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
 
-/* Blob */
 .blob {
   width: 250px;
   height: 250px;
@@ -193,10 +171,6 @@ img {
   position: absolute;
   z-index: -1;
 }
-
-/*=============== CUSTOM CURSOR ===============*/
-
-/* Hide the custom cursor */
 
 /*=============== HEADER & NAV ===============*/
 .header {
@@ -220,7 +194,6 @@ img {
 .nav {
   display: flex;
   justify-content: space-between;
-  /* padding: 1.5rem; */
   padding-block: 1.5rem;
 }
 
@@ -256,10 +229,7 @@ img {
   text-shadow: 0 8px 16px var(--first-color);
 }
 
-/* Active link */
-
 /*=============== HOME ===============*/
-
 .home {
   position: relative;
 }
@@ -434,7 +404,8 @@ img {
   overflow-y: clip;
 }
 
-.about_data .section_title {
+/* FIX: was .about_data .section_title */
+.about_data .section__title {
   margin-bottom: 1.5rem;
   text-align: initial;
 }
@@ -482,7 +453,8 @@ img {
 }
 
 /*=============== PROJECTS ===============*/
-.projects .section_title {
+/* FIX: was .projects .section_title */
+.projects .section__title {
   text-align: initial;
   margin-left: 1.5rem;
   border-radius: 3rem;
@@ -579,7 +551,6 @@ img {
   pointer-events: initial;
 }
 
-/* Swiper class */
 .projects_swiper {
   margin-inline: initial;
   padding-bottom: 2rem;
@@ -607,7 +578,7 @@ img {
   background: none;
   color: var(--text-color);
   display: flex;
-  align-items: center;
+  justify-content: center;
   column-gap: 0.25rem;
   font-size: var(--small-font-size);
   font: var(--second-font);
@@ -704,13 +675,7 @@ img {
 
 /*=============== SERVICES ===============*/
 
-/* Hide services info */
-
-/* Rotate icon */
-
 /*=============== TESTIMONIALS ===============*/
-
-/* Infinite scroll animation */
 
 /*=============== CONTACT ===============*/
 
@@ -753,12 +718,14 @@ img {
     justify-content: center;
   }
 
+  /* FIX: was .about_data, .about_data .section_title */
   .about_data,
-  .about_data .section_title {
+  .about_data .section__title {
     text-align: center;
   }
 
-  :is(.projects) .section_title {
+  /* FIX: was :is(.projects) .section_title */
+  :is(.projects) .section__title {
     text-align: center;
     margin-left: 0;
   }
@@ -897,8 +864,9 @@ img {
     padding-top: 2rem;
   }
 
+  /* FIX: was .about_data, .about_data .section_title */
   .about_data,
-  .about_data .section_title {
+  .about_data .section__title {
     text-align: initial;
     z-index: 2;
   }
@@ -968,7 +936,3 @@ img {
     right: 1.5rem;
   }
 }
-
-/* For 2K resolutions (2048 x 1152, 2048 x 1536) */
-
-/* Custom cursor is hidden for mobile devices */
