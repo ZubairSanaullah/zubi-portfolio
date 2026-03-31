@@ -8,19 +8,15 @@
       href="assets/img/favicon.png"
       type="image/x-icon"
     />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
     />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
     <link rel="stylesheet" href="assets/css/styles.css" />
-
     <title>Zubair Sanaullah - Portfolio Website</title>
   </head>
 
@@ -42,6 +38,10 @@
     </header>
 
     <main class="main">
+      <!-- Custom Cursor -->
+      <div class="cursor"></div>
+
+      <!-- Home Section -->
       <section class="home section" id="home">
         <div class="home_shadow"></div>
         <div class="home_container container grid">
@@ -309,6 +309,7 @@
                 </div>
               </article>
             </div>
+
             <div class="swiper-pagination"></div>
           </div>
         </div>
@@ -429,7 +430,7 @@
       </section>
 
       <!-- Services -->
-      <section class="services section">
+      <section class="services section" id="services">
         <h2 class="section__title">What <span>I Offer</span></h2>
 
         <div class="services_container container grid">
@@ -509,7 +510,7 @@
             </p>
 
             <button class="contact_button button" id="contact-btn">
-              Copy Email <i class="ri-copy-line"></i>
+              Copy Email <i class="ri-mail-fill"></i>
               <span class="contact_email" id="contact-email"
                 >zubairsanaullah1122@gmail.com</span
               >
@@ -517,34 +518,97 @@
           </div>
 
           <div class="contact_content grid">
-            <div class="contact_info grid"></div>
+            <div class="contact_info grid">
+              <div>
+                <h3 class="contact_title">Email</h3>
+                <address class="contact_address">
+                  zubairsanaullah1122@gmail.com
+                </address>
+              </div>
+
+              <div>
+                <h3 class="contact_title">Location</h3>
+                <address class="contact_address">Lahore, Pakistan</address>
+              </div>
+            </div>
 
             <div class="contact_social">
-              <h3 class="contact_title"></h3>
+              <h3 class="contact_title">Social Media</h3>
 
-              <div class="contact_links"></div>
+              <div class="contact_links">
+                <a
+                  href="https://github.com/ZubairSanaullah"
+                  target="_blank"
+                  class="contact_link"
+                >
+                  GitHub
+                  <i class="ri-github-fill"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/zubair-sanaullah-a9325a220"
+                  target="_blank"
+                  class="contact_link"
+                >
+                  Linkedin
+                  <i class="ri-linkedin-box-fill"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/zubairgjutt?igsh=N3A1MnN0bDVsdjBw"
+                  target="_blank"
+                  class="contact_link"
+                >
+                  Instagram
+                  <i class="ri-instagram-fill"></i>
+                </a>
+                <a href="https://x.com/" target="_blank" class="contact_link">
+                  X
+                  <i class="ri-twitter-x-fill"></i>
+                </a>
+              </div>
             </div>
 
             <div class="contact_write">
-              <h3 class="contact_title"></h3>
+              <h3 class="contact_title">Write Me & We'll Talk</h3>
 
-              <div class="contact_links"></div>
+              <div class="contact_links">
+                <a href="" target="_blank" class="contact_link">
+                  WhatsApp
+                  <i class="ri-whatsapp-fill"></i>
+                </a>
+
+                <a href="" target="_blank" class="contact_link">
+                  Messanger
+                  <i class="ri-messenger-fill"></i>
+                </a>
+
+                <a href="" target="_blank" class="contact_link">
+                  Telegram
+                  <i class="ri-telegram-fill"></i>
+                </a>
+
+                <a href="" target="_blank" class="contact_link">
+                  Skype
+                  <i class="ri-skype-fill"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer section">
-      <div class="footer_container container grid">
-        <span class="footer_copy">
-          &#169; <span id="footer-year"></span> Zubair Sanaullah. All rights
-          reserved.
-        </span>
+    <!-- Footer -->
+    <footer class="footer grid">
+      <div class="blob-animate"></div>
+
+      <div class="footer_copy">
+        All Rights Reserved By <span>Zubair Sanaullah</span>
       </div>
+
+      <div class="footer_year">&#169; <span id="footer-year"></span></div>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
